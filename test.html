@@ -6,16 +6,30 @@
   </head>
   <body>
     <div id="root">
-      <input type="text" id="input" v-model="message">
-      <p>{{message}}</p>
+      <ul>
+        <li v-for="name in names" v-text="name">
+        </li>
+      </ul>
+      <input type="text" name="" v-model="newName">
+      <button @click="addName" type="button" name="button">Push</button>
     </div>
+
     <script src="https://unpkg.com/vue@2.3.4"></script>
+
     <script>
-      new Vue({
+      var app = new Vue({
         el: '#root',
+
         data: {
-          message: 'Estasss o no'
-        }
+          newName: '',
+          names: ["Ronald", "Javier"]
+        },
+
+        methods:{
+          addName(){
+            this.names.push(this.newName);
+          }
+        },
       })
     </script>
   </body>
